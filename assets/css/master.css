@@ -1,4 +1,4 @@
-#container{
+#tra_contenedor{
 	position: relative;
 	width: 845px;
 	height: 507px;
@@ -15,9 +15,13 @@
     display: block;
     margin: 0px;
     box-sizing: border-box;
-    height: 444px;
+    height: 100%;
+    height: calc(100% - 43px);
+    height: -moz-calc(100% - 43px);
     width: 100%;
-    top: 63px;
+    top: 43px;
+    padding-top: 20px;
+    background-color: #f4f4f4;
 
     display: flex;
     flex-direction: column;
@@ -190,35 +194,30 @@
 		-webkit-transform: scale(1);
 		-o-transform: scale(1);
 		top: 0px;
-		color: #000000;
 	}
 	40%{
 		transform: scale(1,0.5);
 		-webkit-transform: scale(1,0.5);
 		-o-transform: scale(1,0.5);
 		top: 0px;
-		color: #FFFF00;
 	}
 	70%{
 		transform: scale(1,1.3);
 		-webkit-transform: scale(1,1.3);
 		-o-transform: scale(1,1.3);
 		top: -20px;
-		color: #00FF00;
 	}
 	90%{
 		transform: scale(1,0.5);
 		-webkit-transform: scale(1,0.5);
 		-o-transform: scale(1,0.5);
 		top: 0px;
-		color: #feb30c;
 	}
 	100%{
 		transform: scale(1);
 		-webkit-transform: scale(1);
 		-o-transform: scale(1);
 		top: 0px;
-		color: #000000;
 	}
 }
 @keyframes animacion-win-color{
@@ -226,7 +225,7 @@
 		color: #000000;
 	}
 	33%{
-		color: #FFFF00;
+		color: #ECC52D;
 	}
 	66%{
 		color: #00FF00;
@@ -491,13 +490,4 @@
 	top: calc(50% - 12.5px) !important;
 	top: -moz-calc(50% - 12.5px) !important;
 	opacity: 1 !important;
-}
-
-footer{
-	position: relative;
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
-	height: 60px;
-	background-color: #CCCCCC;
 }

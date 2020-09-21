@@ -17,8 +17,6 @@ function unorderArray(lon){
 
 var game_width = 845
 var game_height = 507
-var instrucciones_label = "Arrastra las palabras en el orden correcto para descubrir la frase oculta"
-getE('instrucciones_txt').innerHTML = instrucciones_label
 
 var palabra_move = getE('palabra-move')
 var palabra_clicked = null
@@ -195,7 +193,14 @@ function comprobarJuego(){
 		//alert("bien, ganaste")
 		pararReloj()
 		getE('frase-wrap').classList.add('frase-wrap-win')
-		setModal({msg:'<span>Felicitaciones,</span> La frase está correcta.',icon:'success',close:false})
+		setModal({
+			msg:'<span>'+titulo_final+',</span> '+mensaje_final+'.<br />',
+			icon:'success',
+			close:false,
+			continue:true,
+			action:'nextTema',
+			label:'Continuar'
+		})
 	}else{
 		var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
 		//quitar estrella
@@ -217,7 +222,7 @@ function comprobarJuego(){
 					clearInterval(animacion_palabra_correcta)
 					animacion_palabra_correcta = null
 
-					setModal({msg:'Haz agotado todos los intentos, haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
+					setModal({msg:'<span>'+titulo_final_mal+'</span>'+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
 				}else{
 					frases_coll[j].innerHTML = '<p>'+respuesta_cortada[j]+'</p>'
 					frases_coll[j].classList.add('frase-element-on')
@@ -265,9 +270,21 @@ function setModal(params){
 		document.getElementById('modal-close-msg').style.visibility = 'hidden'
 	}
 
-	document.getElementById('modal-text-msg').innerHTML = '<p>'+msg+'</p>'
+	var continue_btn = ''
+	var msg_full = '<p>'+msg+'</p>'
+	if(params.continue!=null&&params.continue!=undefined){
+		continue_btn+='<button class="modal-continue-btn" onmouseover="overContinue()" onclick="'+params.action+'()">'+params.label+'</button>'
+		msg_full+=continue_btn
+	}
+
+	document.getElementById('modal-text-msg').innerHTML = msg_full
+
 	document.getElementById('modal').className = 'modal-on'
 	victoria_mp3.play()
+}
+
+function overContinue(){
+	button_mp3.play()
 }
 
 function unsetModal(){
@@ -310,5 +327,9 @@ function getE(idname){
 }
 
 function reloadGame(){
+
+}
+
+function nextTema(){
 
 }

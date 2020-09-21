@@ -1,0 +1,886 @@
+@media (min-width: 845px){
+    html,body{
+        position: relative;
+        width: 845px;
+        height: 507px;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+@media (min-width: 710px) and (max-width: 844px){
+    html,body{
+        position: relative;
+        width: 710px;
+        height: 426px;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #tra_contenedor{
+		width: 710px;
+		height: 426px;
+	}
+
+	#tra_header{
+		width: 100%;
+		height: 30px;
+		box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+	}
+
+	.tra_header_title{
+		padding-left: 20px;
+		background-position: 5px center;
+	    background-size: 10px 20px;
+	}
+	.tra_header_title_txt{
+	    font-size: 13px;
+	}
+
+	#tra_record_col,
+	#tra_tiempo_col,
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    margin: 0px 3px;
+	    border-bottom-width: 1px;
+	}
+	#tra_tiempo_col{
+	    padding: 0px 10px;
+	}
+	#tra_record_col{
+	    padding: 0px 5px;
+	    border-bottom-width: 0px;
+	}
+
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    padding: 0px 3px;
+	}
+
+	#tra_tiempo_txt{
+	    font-size: 12px;
+	}
+	#tra_record_txt{
+	    font-size: 12px;
+	    padding-left: 15px;
+	    background-position: 2px center;
+	    background-size: 12px 12px;
+	}
+	#tra_tiempo_col h6{
+	    font-size: 12px;
+	}
+	#tra_record_col h6{
+	    font-size: 12px;
+	}
+
+	#tra_ayuda_col div,
+	#tra_reload_col div,
+	#tra_music_col div{
+	    width: 20px;
+	    height: 20px;
+	}
+    
+    #tra_ayuda_col section,
+	#tra_reload_col section,
+	#tra_music_col section{
+	    height: 100%;
+	    height: calc(100% - 1px);
+	    height: -moz-calc(100% - 1px);
+	}
+
+	#tra_ayuda_col p,
+	#tra_reload_col p,
+	#tra_music_col p{
+	    width: 110px;
+	    height: 24px;
+	    
+	    font-size: 12px;
+	    left: 50%;
+	    left: calc(50% - 55px);
+	    left: -moz-calc(50% - 55px);
+	}
+
+	#tra_estrellas{
+	    padding-left: 10px;
+	    padding-right: 10px;
+
+	    background-position: 0px center;
+	    background-size: 10px 30px;
+	}
+	.tra_estrella{
+	    margin: 0px 0px;
+	    width: 22px;
+	    height: 22px;
+	}
+
+	#tra_body{
+	    height: 381px;
+	    width: 100%;
+	    top: 45px;
+	}
+
+
+	/**********CONTENIDO AQUI************/
+	#comprobar-btn{
+		width: 150px;
+		height: 40px;
+		font-size: 15px;
+	}
+	#comprobar-btn:hover{
+		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
+		background: #f19e01;
+	}
+
+	#frase-cont{
+		margin: 0px auto;
+		width: 600px;
+	}
+	#frase-correcta-txt{
+		width: 100%;
+		height: 20px;
+		margin: 0px;
+		padding: 0px;
+		left: 0px;
+		display: block;
+		font-family: 'Quicksand', sans-serif;
+		font-size: 15px;
+		color: #000000;
+		text-align: left;
+		font-weight: normal;
+		line-height: normal;
+	}
+	.frase-correcta-txt-hide{
+		opacity: 0;
+		visibility: hidden;
+		top: 0px;
+
+		transition: opacity 0.2s, visibility 0.2s, top 0.2s;
+		-webkit-transition: opacity 0.2s, visibility 0.2s, top 0.2s;
+	}
+	.frase-correcta-txt-show{
+		opacity: 1;
+		visibility: visible;
+		top: -20px;
+
+		transition: opacity 0.2s, visibility 0s, top 0.2s;
+		-webkit-transition: opacity 0.2s, visibility 0s, top 0.2s;
+	}
+	#frase-wrap{
+		position: relative;
+		width: 100%;
+		height: auto;
+		margin: 0px auto;
+		padding: 0px;
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		align-content: center;
+		justify-content: flex-start;
+
+		transform-origin: 50% 100%;
+		-webkit-transform-origin: 50% 100%;
+		-o-transform-origin: 50% 100%;
+	}
+	.frase-element{
+		display: flex;
+		width: auto;
+		padding: 0px;
+		margin: 0px;
+		margin-right: 10px;
+	}
+	.frase-element p{
+		display: block;
+		font-family: 'Quicksand', sans-serif;
+		font-size: 20px;
+		color: #111111;
+		text-align: left;
+		font-weight: normal;
+		line-height: normal;
+		margin: 0px;
+		padding: 0px;
+	}
+	.frase-element-on{
+		animation-name: animacion-palabra-correcta;
+		animation-iteration-count: 1;
+		animation-duration: 0.4s;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+		-webkit-animation-name: animacion-palabra-correcta;
+		-webkit-animation-iteration-count: 1;
+		-webkit-animation-duration: 0.4s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-fill-mode: forwards;
+	}
+	@keyframes animacion-palabra-correcta{
+		0%{
+			transform: scale(0.5);
+			-webkit-transform: scale(0.5);
+			-o-transform: scale(1);
+		}
+		70%{
+			transform: scale(1.3);
+			-webkit-transform: scale(1.3);
+			-o-transform: scale(1.3);
+		}
+		85%{
+			transform: scale(0.8);
+			-webkit-transform: scale(0.8);
+			-o-transform: scale(0.8);
+		}
+		95%{
+			transform: scale(1.1);
+			-webkit-transform: scale(1.1);
+			-o-transform: scale(1.1);
+		}
+		100%{
+			transform: scale(1);
+			-webkit-transform: scale(1);
+			-o-transform: scale(1);
+		}
+	}
+	.frase-wrap-win,.frase-wrap-win p{
+		animation-iteration-count: 3;
+		animation-duration: 0.75s;
+		animation-timing-function: linear;
+		
+		-webkit-animation-iteration-count: 3;
+		-webkit-animation-duration: 0.75s;
+		-webkit-animation-timing-function: linear;
+	}
+	.frase-wrap-win{
+		animation-name: animacion-win;
+		-webkit-animation-name: animacion-win;
+	}
+	.frase-wrap-win p{
+		animation-name: animacion-win-color;
+		-webkit-animation-name: animacion-win-color;
+	}
+	@keyframes animacion-win{
+		0%{
+			transform: scale(1);
+			-webkit-transform: scale(1);
+			-o-transform: scale(1);
+			top: 0px;
+		}
+		40%{
+			transform: scale(1,0.5);
+			-webkit-transform: scale(1,0.5);
+			-o-transform: scale(1,0.5);
+			top: 0px;
+		}
+		70%{
+			transform: scale(1,1.3);
+			-webkit-transform: scale(1,1.3);
+			-o-transform: scale(1,1.3);
+			top: -20px;
+		}
+		90%{
+			transform: scale(1,0.5);
+			-webkit-transform: scale(1,0.5);
+			-o-transform: scale(1,0.5);
+			top: 0px;
+		}
+		100%{
+			transform: scale(1);
+			-webkit-transform: scale(1);
+			-o-transform: scale(1);
+			top: 0px;
+		}
+	}
+	@keyframes animacion-win-color{
+		0%{
+			color: #000000;
+		}
+		33%{
+			color: #ECC52D;
+		}
+		66%{
+			color: #00FF00;
+		}
+		100%{
+			color: #000000;
+		}
+	}
+
+	#palabras-cont{
+		position: relative;
+		margin: 0px auto;
+		width: 700px;
+		height: auto;
+		background-color: #FFFFFF;
+		box-sizing: border-box;
+		border-radius: 4px;
+		/*box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);*/
+		box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2) inset;
+	}
+	#palabras-wrap{
+		position: relative;
+		width: 100%;
+		height: auto;
+		margin: 0px auto;
+		padding: 0px;
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		align-content: center;
+		justify-content: center;
+		padding-top: 10px;
+	}
+
+	.palabra-element,#palabra-move{
+		background-color: #7cb139;
+		border: rgba(0,0,0,0) solid 1px;
+		
+		box-sizing: border-box;
+		padding: 0px 15px;
+		
+		border-radius: 4px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.palabra-element{
+		position: relative;
+		margin: 0px 10px;
+		margin-bottom: 10px;
+		transform-origin: 0% center;
+		-webkit-transform-origin: 0% center;
+		-o-transform-origin: 0% center;
+	}
+	#palabra-move{
+		position: absolute;
+		margin: 0px;
+		cursor: grabbing;
+	}
+	.palabra-move-off{
+		visibility: hidden;
+		transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+		-o-transform: scale(0.5);
+		opacity: 0;
+		box-shadow: none;
+
+		transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+		-webkit-transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	}
+	.palabra-move-on{
+		visibility: visible;
+		transform: scale(1);
+		-webkit-transform: scale(1);
+		-o-transform: scale(1);
+		opacity: 1;
+		box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
+
+		transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+		-webkit-transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	}
+	.palabra-element:hover{
+		box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
+		border: rgba(0,0,0,1) solid 1px;
+		cursor: grab;
+	}
+	.palabra-element p,#palabra-move p,.espacio-palabra p{
+		display: block;
+		width: 100%;
+		font-family: 'Quicksand', sans-serif;
+		font-size: 14px;
+		color: #000000;
+		text-align: center;
+		font-weight: normal;
+		margin: 0px;
+		padding: 0px;
+	}
+	.palabra_clicked{
+		visibility: hidden;
+		opacity: 0;
+		transform: scale(0) rotate(-45deg);
+		-webkit-transform: scale(0) rotate(-45deg);
+		-o-transform: scale(0) rotate(-45deg);
+
+		transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
+		-webkit-transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
+	}
+	.palabra_sola{
+		visibility: visible;
+		opacity: 1;
+		transform: scale(1) rotate(0deg);
+		-webkit-transform: scale(1) rotate(0deg);
+		-o-transform: scale(1) rotate(0deg);
+
+		transition: visibility 0s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
+		-webkit-transition: visibility 0s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
+	}
+
+
+	#espacios-cont{
+		position: relative;
+		margin: 0px auto;
+		width: 700px;
+		height: auto;
+		box-sizing: border-box;
+	}
+	#espacios-wrap{
+		position: relative;
+		width: 100%;
+		height: auto;
+		margin: 0px;
+		padding: 0px;
+		box-sizing: border-box;
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		align-content: center;
+		justify-content: flex-start;
+		padding-top: 10px;
+
+		background-color: #464646;
+		border-radius: 4px;
+		box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.5) inset;
+	}
+
+	.espacio-element{
+		position: relative;
+		
+		box-sizing: border-box;
+		padding: 0px;
+		margin: 0px 10px;
+		margin-bottom: 10px;
+		border-radius: 4px;
+		border: none;
+		overflow: hidden;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.espacio-palabra{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: #F1F1F1;
+		padding: 0px 15px;
+		box-sizing: border-box;
+		
+		border-radius: 4px;
+		overflow: hidden;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.espacio-palabra::after{
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		background: #FFFFFF;
+		background: linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
+		background: -moz-linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
+		background: -webkit-linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
+		background: -o-linear-gradient(to right, rgba(255,255,255,0), #FFFFFF);
+		opacity: 0;
+
+		transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+	}
+	.espacio-eliminar{
+		display: block;
+		position: absolute;
+		width: 25px;
+		height: 25px;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		background-color: rgba(0,0,0,0);
+		background-image: url(../images/remove-icon.svg);
+		top: -25px;
+		opacity: 0;
+		border: none;
+		cursor: pointer;
+	}
+
+	.espacio-element-active{
+		animation-name: animacion-espacio-active;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		-webkit-animation-name: animacion-espacio-active;
+		-webkit-animation-duration: 1s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: linear;
+	}
+	@keyframes animacion-espacio-active{
+		0% {
+			box-shadow: 0px 0px 1px 1px #7cb139;
+		}
+		50% {
+			box-shadow: 0px 0px 1px 1px rgba(0,0,0,0);
+		}
+		100% {
+			box-shadow: 0px 0px 1px 1px #7cb139;
+		}
+	}
+
+	.espacio-element-empty .espacio-eliminar{
+		right: 100%;
+		opacity: 0;
+		transition: right 0.2s, opacity 0.2s, top 0.2s;
+		-webkit-transition: right 0.2s, opacity 0.2s, top 0.2s;
+	}
+	.espacio-element-empty .espacio-palabra{
+		left: -100%;
+		opacity: 0;
+		transition: left 0.2s, opacity 0.2s;
+		-webkit-transition: left 0.2s, opacity 0.2s;
+	}
+	.espacio-element-occuped .espacio-palabra{
+		left: 0%;
+		opacity: 1;
+		transition: left 0.2s, opacity 0.2s;
+		-webkit-transition: left 0.2s, opacity 0.2s;
+	}
+	.espacio-element-occuped .espacio-eliminar{
+		right: 5px;
+		opacity: 1;
+		transition: right 0.2s, opacity 0.2s, top 0.2s;
+		-webkit-transition: right 0.2s, opacity 0.2s, top 0.2s;
+	}
+	.espacio-element-occuped:hover .espacio-palabra::after{
+		opacity: 1 !important;
+	}
+	.espacio-element-occuped:hover .espacio-eliminar{
+		top: 50% !important;
+		top: calc(50% - 12.5px) !important;
+		top: -moz-calc(50% - 12.5px) !important;
+		opacity: 1 !important;
+	}
+
+	/************END CONTENT*************/
+
+	
+
+	#modal{
+	    height: 396px;
+	    top: 30px;
+	}
+	#instrucciones{
+	    height: 396px;
+	    top: 30px;
+	}
+
+}
+
+@media (min-width: 530px) and (max-width: 709px){
+    html,body{
+        position: relative;
+        width: 530px;
+        height: 600px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #tra_contenedor{
+		width: 530px;
+		height: 600px;
+	}
+
+	#tra_header{
+		width: 100%;
+		height: 40px;
+		box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+	}
+
+	.tra_header_title{
+		width: 140px;
+
+		padding-left: 20px;
+		background-position: 5px center;
+	    background-size: 10px 20px;
+	}
+	.tra_header_title_txt{
+	    font-size: 13px;
+	}
+
+	#tra_record_col,
+	#tra_tiempo_col,
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    margin: 0px 2px;
+	    border-bottom-width: 2px;
+	}
+	#tra_tiempo_col{
+	    padding: 0px 5px;
+	}
+	#tra_record_col{
+	    padding: 0px 5px;
+	    border-bottom-width: 0px;
+	}
+
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    padding: 0px 5px;
+	}
+
+	#tra_tiempo_txt{
+	    font-size: 13px;
+	}
+	#tra_record_txt{
+	    font-size: 13px;
+	    padding-left: 15px;
+	    background-position: 13px center;
+	    background-size: 12px 12px;
+	}
+	#tra_tiempo_col h6{
+	    font-size: 13px;
+	}
+	#tra_record_col h6{
+	    font-size: 13px;
+	}
+
+	#tra_ayuda_col div,
+	#tra_reload_col div,
+	#tra_music_col div{
+	    width: 20px;
+	    height: 20px;
+	}
+    
+    #tra_ayuda_col section,
+	#tra_reload_col section,
+	#tra_music_col section{
+	    height: 100%;
+	    height: calc(100% - 2px);
+	    height: -moz-calc(100% - 2px);
+	}
+
+	#tra_ayuda_col p,
+	#tra_reload_col p,
+	#tra_music_col p{
+	    width: 110px;
+	    height: 24px;
+	    
+	    font-size: 12px;
+	    left: 50%;
+	    left: calc(50% - 55px);
+	    left: -moz-calc(50% - 55px);
+	}
+
+	#tra_estrellas{
+	    padding-left: 10px;
+	    padding-right: 10px;
+
+	    background-position: 0px center;
+	    background-size: 10px 30px;
+	}
+	.tra_estrella{
+	    margin: 0px 0px;
+	    width: 22px;
+	    height: 22px;
+	}
+
+	#tra_body{
+	    height: 540px;
+	    width: 100%;
+	    top: 55px;
+	}
+	
+	#modal{
+	    height: 560px;
+	    top: 40px;
+	}
+	#instrucciones{
+	    height: 560px;
+	    top: 40px;
+		align-items: flex-start;
+	}
+	#instrucciones-box{
+		margin-top: 30px;
+	}
+	#instrucciones-box > p{
+		margin: 15px 0px;
+	}
+}
+
+@media (min-width: 280px) and (max-width: 529px){
+    html,body{
+        position: relative;
+        width: 100%;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        
+        margin: 0px;
+        padding: 0px;
+        min-height: 700px;
+    }
+
+    #tra_contenedor{
+		width: 100%;
+		height: auto;
+		min-height: 600px;
+	}
+
+	#tra_header{
+		width: 100%;
+		height: 45px;
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+		border-bottom: 1px #f69e06 solid;
+	}
+
+	.tra_header_title{
+		display: none;
+	}
+	.tra_header_toolbar{
+		width: 100%;
+		justify-content: space-between;
+	}
+	.tra_header_nav{
+	    justify-content: flex-start;
+	}
+
+	#tra_record_col,
+	#tra_tiempo_col,
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    margin: 0px;
+	    margin-right: 10px;
+	    border-bottom-width: 2px;
+	}
+	#tra_tiempo_col{
+		position: fixed;
+		width: 94px;
+		height: 40px;
+		bottom: 0px;
+		right: 0px;
+	    padding: 0px 20px;
+	    margin: 0px;
+	}
+	#tra_record_col{
+		position: fixed;
+		height: 40px;
+		bottom: 0px;
+		right: 104px;
+	    padding: 0px 7px;
+	    margin: 0px;
+	    border-bottom-width: 0px;
+	}
+
+	#tra_ayuda_col,
+	#tra_reload_col,
+	#tra_music_col{
+	    padding: 0px 7px;
+	}
+
+	#tra_tiempo_txt{
+	    font-size: 13px;
+	}
+	#tra_record_txt{
+	    font-size: 13px;
+	    padding-left: 15px;
+	    background-position: 13px center;
+	    background-size: 12px 12px;
+	}
+	#tra_tiempo_col h6{
+	    font-size: 13px;
+	}
+	#tra_record_col h6{
+	    font-size: 13px;
+	}
+
+	#tra_ayuda_col div,
+	#tra_reload_col div,
+	#tra_music_col div{
+	    width: 24px;
+	    height: 24px;
+	}
+    
+    #tra_ayuda_col section,
+	#tra_reload_col section,
+	#tra_music_col section{
+	    height: 100%;
+	    height: calc(100% - 2px);
+	    height: -moz-calc(100% - 2px);
+	}
+
+	#tra_ayuda_col p,
+	#tra_reload_col p,
+	#tra_music_col p{
+	    display: none;
+	}
+
+	#tra_estrellas{
+		justify-content: flex-end;
+	    padding-left: 20px;
+	    padding-right: 10px;
+
+	    background-position: 0px center;
+	    background-size: 10px 30px;
+	}
+	.tra_estrella{
+	    margin: 0px 0px;
+	    width: 22px;
+	    height: 22px;
+	}
+
+	#tra_body{
+		display: flex;
+	    height: auto;
+	    width: 100%;
+	    width: calc(100% - 10px);
+	    width: -moz-calc(100% - 10px);
+	    top: inherit;
+	    margin-top: 65px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    justify-content: space-between;
+	    margin-bottom: 50px;
+	}
+
+	
+
+	#modal{
+	    height: 100%;
+	    height: calc(100% - 40px);
+	    height: -moz-calc(100% - 40px);
+	    top: 40px;
+	    z-index: 200;
+	}
+	#modal-msg{
+	    width: 300px;
+	    height: 165px;
+	}
+	.modal-off #modal-msg{
+	    left: -300px;
+	}
+
+	#instrucciones{
+	    height: 100%;
+	    height: calc(100% - 40px);
+	    height: -moz-calc(100% - 40px);
+	    top: 40px;
+	    z-index: 200;
+	    align-items: flex-start;
+	}
+	#instrucciones-box{
+		margin-top: 30px;
+	}
+	#instrucciones-box > p{
+		margin: 15px 0px;
+	}
+	#cargador{
+		display: none;
+	}
+}

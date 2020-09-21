@@ -1,4 +1,11 @@
 {
-	"frase":"El tiempo pasa y se nos va la vida",
-	"respuesta":"El tiempo pasa y se nos va la vida"
+	"frase":"El tiempo pasa",
+	"respuesta":"El tiempo pasa",
+	"titulo_final":"¡Felicitaciones!",
+ 	"mensaje_final":"La frase está correcta",
+ 	"titulo_final_mal":"Lo sentimos  mucho",
+ 	"mensaje_final_mal":"Haz agotado todos los intentos",
+	"titulo_instrucciones":"¡Instrucciones!",
+	"mensaje_instrucciones":"Arrastra las palabras en el orden correcto para descubrir la frase oculta",
+	"numero_intentos":3
 }
