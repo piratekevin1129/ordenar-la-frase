@@ -15,17 +15,25 @@
     <link href="assets/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/header.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/master.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/data.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!--<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />-->
 
-    <script src="assets/js/data.js"></script>
+    <script>
+        var titulo_final = ''
+        var titulo_final_mal = ''
+        var mensaje_final = ''
+        var mensaje_final_mal = ''
+        var titulo_instrucciones = ''
+        var mensaje_instrucciones = ''
+        var numero_intentos = 0
+
+    </script>
     <title>Ordena la frase</title>
 </head>
 <body>
-    <div id="container">
+    <div id="tra_contenedor">
         <audio id="underground_mp3" onended="repeatUnderground()">
             <source src="assets/media/electronic_lizard_uplifting_light.mp3" type="audio/mp3" />
         </audio>
@@ -66,30 +74,22 @@
 
         <div id="instrucciones" class="instrucciones-off">
             <div id="instrucciones-box">
-                <h4 id="instrucciones_title"></h4>
-                <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
-                
-                <p id="instrucciones_txt"></p>
-                <div class="instrucciones-gif">
-                    <div class="demo-row2">
-                        <div class="demo-col-4"></div>
-                        <div class="demo-col-5"></div>
-                        <div class="demo-col-6"></div>
+                <div id="instrucciones-box-wrap">
+                    <h4 id="instrucciones_title"></h4><!--titulo-->
+                    <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
+                    
+                    <p id="instrucciones_txt"></p><!--Texto introductorio personalizado-->
+                    <p id="instrucciones_inst"></p><!--Texto por defecto de las instrucciones-->
+                    <div id="instrucciones-gif">
+                        <!--aqui va html del gif animado con css--> 
                     </div>
-
-                    <div class="demo-row1">
-                        <div class="demo-col-1">xxx</div>
-                        <div class="demo-col-2">xxx</div>
-                        <div class="demo-col-3">xxx</div>
+                    <p>Haz clic en el botón <span>Comprobar</span> para verificar si la frase está en el orden correcto.</p>
+                    <p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
+                    <div class="instrucciones-starts">
+                        <div class="instrucciones-star"></div>
+                        <div class="instrucciones-star"></div>
+                        <div class="instrucciones-star"></div>
                     </div>
-                    <div class="demo-cursor"></div>
-                </div>
-                <p>Haz clic en el botón <span>Comprobar</span> para verificar si la frase está en el orden correcto.</p>
-                <p>Tienes <span id="intentos_txt"></span> oportunidades.</p>
-                <div class="instrucciones-starts">
-                    <div class="instrucciones-star"></div>
-                    <div class="instrucciones-star"></div>
-                    <div class="instrucciones-star"></div>
                 </div>
             </div>
         </div>
@@ -139,16 +139,20 @@
         </div>
     </div>
 
+<script src="assets/js/mobile.js"></script>
 <script src="assets/js/tools.js"></script>
 <script src="assets/js/scorm.js"></script>
 <script src="assets/js/game.js"></script>
 <script>
+
+prepareWindow()
 
 var drag_mp3 = null
 var incorrect_mp3 = null
 var remove_mp3 = null
 var victoria_mp3 = null
 var button_mp3 = null
+var over_mp3 = null
 
 var global_data = null
 window.onload = function(){
@@ -166,12 +170,15 @@ window.onload = function(){
         victoria_mp3 = data
         loadAudio({src:'assets/media/button.mp3',callBack:function(data){
         button_mp3 = data
+        loadAudio({src:'assets/media/over.mp3',callBack:function(data){
+        over_mp3 = data
         
             //initScorm()
 
             document.getElementById('tra_record_col').style.visibility = 'hidden'
             initGame()
 
+        }})
         }})
         }})
         }})

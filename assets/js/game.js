@@ -49,7 +49,12 @@ function setGame(){
 		pe.className = 'palabra-element palabra_clicked'
 		pe.id = 'palabra'+u
 		pe.setAttribute('ind',u)
-		pe.setAttribute('onmousedown','downPalabra(this,event)')
+		if(!ismobile){
+			pe.setAttribute('onmousedown','downPalabra(this,event)')
+		}else{
+			pe.setAttribute('onclick','clickPalabra('+u+')')
+		}
+		
 		pe.setAttribute('key',frase_cortada[u-1])
 		pe.innerHTML = '<p>'+frase_cortada[u-1]+'</p>'
 		getE('palabras-wrap').appendChild(pe)
@@ -57,6 +62,9 @@ function setGame(){
 		var ee = document.createElement('div')
 		ee.className = 'espacio-element espacio-element-empty'
 		ee.id = 'espacio'+u
+		if(ismobile){
+			ee.setAttribute('onclick','clickEspacio('+i+')')
+		}
 		ee.setAttribute('ind',u)
 		ee.setAttribute('key','')
 		ee.setAttribute('value','')
@@ -68,7 +76,77 @@ function setGame(){
 		palabras_coll.push(pe)
 		frases_coll.push(fe)
 	}
+}
 
+function clickPalabra(idname){
+	//console.log("click palabra")
+	var palabra_div = getE('palabra'+idname)
+	drag_mp3.currentTime = 0
+	drag_mp3.play()
+
+	if(palabra_clicked!=null){
+		//ya hay una clickeada, pongamola normal
+		palabra_clicked.classList.remove('palabra_selected')
+		palabra_clicked.classList.add('palabra_sola')
+	}
+
+	palabra_clicked = palabra_div
+	palabra_clicked_rect = {
+		width:palabra_div.offsetWidth,
+		height:palabra_div.offsetHeight
+	}
+	
+	palabra_clicked.classList.remove('palabra_sola')
+	palabra_clicked.classList.add('palabra_selected')
+
+	//poner espacios alumbrando, menos los ocupados
+	for(i = 0;i<espacios_coll.length;i++){
+		var clase_actual = espacios_coll[i].className
+		if(clase_actual.indexOf('empty')!=-1){
+			espacios_coll[i].classList.add('espacio-element-active')
+		}
+	}
+}
+function clickEspacio(idname){
+	//comprobar que no este ocupado ya
+	var toca_espacio = -1
+	var clase_actual = espacios_coll[idname].className
+	if(clase_actual.indexOf('empty')!=-1){
+		toca_espacio = idname
+	}
+
+	if(toca_espacio!=-1){
+		if(palabra_clicked==null||palabra_clicked==undefined){
+			setModal({
+				msg:'Selecciona una palabra para ubicar en este espacio',
+				close:true,
+				delay:4000
+			})
+		}else{
+			//quitar alumbraciones
+			for(i = 0;i<espacios_coll.length;i++){
+				espacios_coll[i].classList.remove('espacio-element-active')
+			}
+
+			espacios_coll[toca_espacio].classList.remove('espacio-element-empty')
+			espacios_coll[toca_espacio].classList.add('espacio-element-occuped')
+			espacios_coll[toca_espacio].setAttribute('key',palabra_clicked.getAttribute('ind'))
+			espacios_coll[toca_espacio].setAttribute('value',palabra_clicked.getAttribute('key'))
+
+			var texto = espacios_coll[toca_espacio].getElementsByClassName('espacio-palabra')[0]
+			texto.innerHTML = palabra_clicked.innerHTML
+			frases_coll[toca_espacio].innerHTML = palabra_clicked.innerHTML
+			frases_coll[toca_espacio].setAttribute('key',palabra_clicked.getAttribute('key'))
+
+			palabra_clicked.classList.remove('palabra_selected')
+			palabra_clicked.classList.add('palabra_clicked')
+			palabra_clicked = null
+			palabra_clicked_rect = null
+		}
+	}else{
+		//ocupado
+		console.log("ocupado")
+	}
 }
 
 function downPalabra(palabra_div,e){
@@ -147,6 +225,8 @@ function upPalabra(e){
 		palabra_clicked.classList.remove('palabra_clicked')
 		palabra_clicked.classList.add('palabra_sola')
 	}
+	palabra_clicked = null
+	palabra_clicked_rect = null
 }
 
 function quitarPalabra(btn,s){
@@ -222,11 +302,13 @@ function comprobarJuego(){
 					clearInterval(animacion_palabra_correcta)
 					animacion_palabra_correcta = null
 
-					setModal({msg:'<span>'+titulo_final_mal+'</span>'+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
+					setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
 				}else{
 					frases_coll[j].innerHTML = '<p>'+respuesta_cortada[j]+'</p>'
 					frases_coll[j].classList.add('frase-element-on')
 					j++
+					over_mp3.currentTime = 0
+					over_mp3.play()
 				}
 			},200)
 		}else{
@@ -248,6 +330,7 @@ function comprobarJuego(){
 }
 
 /**********MODALES***********/
+var animacion_modal_delay = null
 function setModal(params){
 	var msg = params.msg
 	var icon = 'error'
@@ -281,6 +364,15 @@ function setModal(params){
 
 	document.getElementById('modal').className = 'modal-on'
 	victoria_mp3.play()
+
+	if(params.delay!=null&&params.delay==undefined){
+		animacion_modal_delay = setTimeout(function(){
+			clearTimeout(animacion_modal_delay)
+			animacion_modal_delay = null
+
+			unsetModal()
+		},params.delay)
+	}
 }
 
 function overContinue(){

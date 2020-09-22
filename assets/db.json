@@ -1,11 +1,11 @@
 {
-	"frase":"El tiempo pasa",
-	"respuesta":"El tiempo pasa",
+	"frase":"habia una vez una iguana con una ruana de lana peinándose la melena en el",
+	"respuesta":"habia una vez una iguana con una ruana de lana peinándose la melena en el",
 	"titulo_final":"¡Felicitaciones!",
  	"mensaje_final":"La frase está correcta",
- 	"titulo_final_mal":"Lo sentimos  mucho",
+ 	"titulo_final_mal":"Lo sentimos  mucho :(",
  	"mensaje_final_mal":"Haz agotado todos los intentos",
 	"titulo_instrucciones":"¡Instrucciones!",
-	"mensaje_instrucciones":"Arrastra las palabras en el orden correcto para descubrir la frase oculta",
+	"mensaje_instrucciones":"Es momento de concentrarse",
 	"numero_intentos":3
 }

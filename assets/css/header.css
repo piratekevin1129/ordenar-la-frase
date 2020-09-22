@@ -223,7 +223,7 @@
     height: 24px;
     margin: 0px;
     padding: 0px 0px;
-    background-color: #F3F4F3;
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -243,6 +243,8 @@
     -webkit-transform: scale(0.5);
     -o-transform: scale(0.5);
     top: 80%;
+    z-index: 20;
+    box-shadow: 0px 4px 3px -3px rgba(0,0,0,0.5);
 }
 
 #tra_ayuda_col:hover section,
@@ -346,5 +348,307 @@
         transform: scale(1);
         -webkit-transform: scale(1);
         -o-transform: scale(1);
+    }
+}
+
+
+@media (min-width: 845px){
+    
+}
+
+@media (min-width: 710px) and (max-width: 844px){
+    #tra_header{
+        width: 100%;
+        height: 30px;
+        box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+    }
+
+    .tra_header_title{
+        padding-left: 20px;
+        background-position: 5px center;
+        background-size: 10px 20px;
+    }
+    .tra_header_title_txt{
+        font-size: 13px;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px 3px;
+        border-bottom-width: 1px;
+    }
+    #tra_tiempo_col{
+        padding: 0px 10px;
+    }
+    #tra_record_col{
+        padding: 0px 5px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 3px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 12px;
+    }
+    #tra_record_txt{
+        font-size: 12px;
+        padding-left: 15px;
+        background-position: 2px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 12px;
+    }
+    #tra_record_col h6{
+        font-size: 12px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 20px;
+        height: 20px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 1px);
+        height: -moz-calc(100% - 1px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        width: 110px;
+        height: 24px;
+        
+        font-size: 12px;
+        left: 50%;
+        left: calc(50% - 55px);
+        left: -moz-calc(50% - 55px);
+    }
+
+    #tra_estrellas{
+        padding-left: 10px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 530px) and (max-width: 709px){
+    #tra_header{
+        width: 100%;
+        height: 40px;
+        box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.1);
+    }
+
+    .tra_header_title{
+        width: 140px;
+
+        padding-left: 20px;
+        background-position: 5px center;
+        background-size: 10px 20px;
+    }
+    .tra_header_title_txt{
+        font-size: 13px;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px 2px;
+        border-bottom-width: 2px;
+    }
+    #tra_tiempo_col{
+        padding: 0px 5px;
+    }
+    #tra_record_col{
+        padding: 0px 5px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 5px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 13px;
+    }
+    #tra_record_txt{
+        font-size: 13px;
+        padding-left: 15px;
+        background-position: 13px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 13px;
+    }
+    #tra_record_col h6{
+        font-size: 13px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 20px;
+        height: 20px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 2px);
+        height: -moz-calc(100% - 2px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        width: 110px;
+        height: 24px;
+        
+        font-size: 12px;
+        left: 50%;
+        left: calc(50% - 55px);
+        left: -moz-calc(50% - 55px);
+    }
+
+    #tra_estrellas{
+        padding-left: 10px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 529px){
+    #tra_header{
+        width: 100%;
+        height: 45px;
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+        border-bottom: 1px #f69e06 solid;
+    }
+
+    .tra_header_title{
+        display: none;
+    }
+    .tra_header_toolbar{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .tra_header_nav{
+        justify-content: flex-start;
+    }
+
+    #tra_record_col,
+    #tra_tiempo_col,
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        margin: 0px;
+        margin-right: 10px;
+        border-bottom-width: 2px;
+    }
+    #tra_tiempo_col{
+        position: fixed;
+        width: 94px;
+        height: 40px;
+        bottom: 0px;
+        right: 0px;
+        padding: 0px 20px;
+        margin: 0px;
+    }
+    #tra_record_col{
+        position: fixed;
+        height: 40px;
+        bottom: 0px;
+        right: 104px;
+        padding: 0px 7px;
+        margin: 0px;
+        border-bottom-width: 0px;
+    }
+
+    #tra_ayuda_col,
+    #tra_reload_col,
+    #tra_music_col{
+        padding: 0px 7px;
+    }
+
+    #tra_tiempo_txt{
+        font-size: 13px;
+    }
+    #tra_record_txt{
+        font-size: 13px;
+        padding-left: 15px;
+        background-position: 13px center;
+        background-size: 12px 12px;
+    }
+    #tra_tiempo_col h6{
+        font-size: 13px;
+    }
+    #tra_record_col h6{
+        font-size: 13px;
+    }
+
+    #tra_ayuda_col div,
+    #tra_reload_col div,
+    #tra_music_col div{
+        width: 24px;
+        height: 24px;
+    }
+    
+    #tra_ayuda_col section,
+    #tra_reload_col section,
+    #tra_music_col section{
+        height: 100%;
+        height: calc(100% - 2px);
+        height: -moz-calc(100% - 2px);
+    }
+
+    #tra_ayuda_col p,
+    #tra_reload_col p,
+    #tra_music_col p{
+        display: none;
+    }
+
+    #tra_estrellas{
+        justify-content: flex-end;
+        padding-left: 20px;
+        padding-right: 10px;
+
+        background-position: 0px center;
+        background-size: 10px 30px;
+    }
+    .tra_estrella{
+        margin: 0px 0px;
+        width: 22px;
+        height: 22px;
     }
 }
