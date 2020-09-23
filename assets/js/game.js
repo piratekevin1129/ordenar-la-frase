@@ -110,9 +110,14 @@ function clickPalabra(idname){
 function clickEspacio(idname){
 	//comprobar que no este ocupado ya
 	var toca_espacio = -1
-	var clase_actual = espacios_coll[idname].className
+	var space = getE('espacio'+idname)
+	var clase_actual = space.className
 	if(clase_actual.indexOf('empty')!=-1){
-		toca_espacio = idname
+		for(i = 0;i<espacios_coll.length;i++){
+			if(espacios_coll[i].id=='espacio'+idname){
+				toca_espacio = i
+			}
+		}
 	}
 
 	if(toca_espacio!=-1){
