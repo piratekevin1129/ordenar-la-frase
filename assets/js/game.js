@@ -62,13 +62,13 @@ function setGame(){
 		var ee = document.createElement('div')
 		ee.className = 'espacio-element espacio-element-empty'
 		ee.id = 'espacio'+u
+		var h = '<div class="espacio-palabra"><p>...</p></div><button class="espacio-eliminar" onclick="quitarPalabra(this)"></button>'
 		if(ismobile){
-			ee.setAttribute('onclick','clickEspacio('+i+')')
+			ee.setAttribute('onclick','clickEspacio('+u+')')
 		}
 		ee.setAttribute('ind',u)
 		ee.setAttribute('key','')
 		ee.setAttribute('value','')
-		var h = '<div class="espacio-palabra"><p>...</p></div><button class="espacio-eliminar" onclick="quitarPalabra(this)"></button>'
 		ee.innerHTML = h
 		getE('espacios-wrap').appendChild(ee)
 
@@ -120,7 +120,7 @@ function clickEspacio(idname){
 			setModal({
 				msg:'Selecciona una palabra para ubicar en este espacio',
 				close:true,
-				delay:4000
+				autoclose:4000
 			})
 		}else{
 			//quitar alumbraciones
@@ -132,6 +132,8 @@ function clickEspacio(idname){
 			espacios_coll[toca_espacio].classList.add('espacio-element-occuped')
 			espacios_coll[toca_espacio].setAttribute('key',palabra_clicked.getAttribute('ind'))
 			espacios_coll[toca_espacio].setAttribute('value',palabra_clicked.getAttribute('key'))
+			//quitar onclick
+			espacios_coll[toca_espacio].removeAttribute('onclick')
 
 			var texto = espacios_coll[toca_espacio].getElementsByClassName('espacio-palabra')[0]
 			texto.innerHTML = palabra_clicked.innerHTML
@@ -229,6 +231,7 @@ function upPalabra(e){
 	palabra_clicked_rect = null
 }
 
+var animacion_quitar_palabra = null //funcion para switchear attribute onclick en responsive
 function quitarPalabra(btn,s){
 	if(s==null||s==undefined){
 		remove_mp3.play()
@@ -247,6 +250,23 @@ function quitarPalabra(btn,s){
 	padre.setAttribute('value','')
 	var texto = padre.getElementsByClassName('espacio-palabra')[0]
 	texto.innerHTML = ''
+
+	if(ismobile){
+		if(s==null||s==undefined){
+			//quitando manualmente
+			animacion_quitar_palabra = setTimeout(function(){
+				clearTimeout(animacion_quitar_palabra)
+				animacion_quitar_palabra = null
+
+				//poner de nuevo el onclick
+				padre.setAttribute('onclick','clickEspacio('+ind+')')
+			},50)
+		}else{
+			//quitando directamete
+			//poner de nuevo el onclick
+			padre.setAttribute('onclick','clickEspacio('+ind+')')
+		}
+	}		
 
 	getE('frase'+ind).innerHTML = '<p>...</p>'
 	getE('frase'+ind).setAttribute('key','')
@@ -280,7 +300,8 @@ function comprobarJuego(){
 			close:false,
 			continue:true,
 			action:'nextTema',
-			label:'Continuar'
+			label:'Continuar',
+			delay:1500
 		})
 	}else{
 		var stars = getE('tra_estrellas').getElementsByClassName('tra_estrella')
@@ -334,6 +355,7 @@ function comprobarJuego(){
 
 /**********MODALES***********/
 var animacion_modal_delay = null
+var animacion_modal_autoclose = null
 function setModal(params){
 	var msg = params.msg
 	var icon = 'error'
@@ -365,16 +387,27 @@ function setModal(params){
 
 	document.getElementById('modal-text-msg').innerHTML = msg_full
 
-	document.getElementById('modal').className = 'modal-on'
+	
 	victoria_mp3.play()
 
-	if(params.delay!=null&&params.delay==undefined){
+	if(params.delay!=null&&params.delay!=undefined){
 		animacion_modal_delay = setTimeout(function(){
 			clearTimeout(animacion_modal_delay)
 			animacion_modal_delay = null
 
-			unsetModal()
+			document.getElementById('modal').className = 'modal-on'
 		},params.delay)
+	}else{
+		document.getElementById('modal').className = 'modal-on'
+	}
+
+	if(params.autoclose!=null&&params.autoclose!=undefined){
+		animacion_modal_autoclose = setTimeout(function(){
+			clearTimeout(animacion_modal_autoclose)
+			animacion_modal_autoclose = null
+
+			unsetModal()
+		},params.autoclose)
 	}
 }
 
@@ -383,6 +416,14 @@ function overContinue(){
 }
 
 function unsetModal(){
+	if(animacion_modal_delay!=null){
+		clearTimeout(animacion_modal_delay)
+		animacion_modal_delay = null
+	}
+	if(animacion_modal_autoclose!=null){
+		clearTimeout(animacion_modal_autoclose)
+		animacion_modal_autoclose = null
+	}
 	document.getElementById('modal').className = 'modal-off'
 }
 

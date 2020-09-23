@@ -17,7 +17,8 @@
     #palabra-move,
 	.palabra-element,
 	.espacio-element,
-	.espacio-palabra
+	.espacio-palabra,
+	.espacio-palabra::after
 	{
 		width: 120px;
 		height: 30px;
@@ -36,7 +37,6 @@
 	.espacio-palabra::after{
 		position: absolute;
 		content: "";
-		width: 100%;
 		height: 100%;
 		top: 0px;
 		background: #FFFFFF;
@@ -142,7 +142,8 @@
 	#palabra-move,
 	.palabra-element,
 	.espacio-element,
-	.espacio-palabra
+	.espacio-palabra,
+	.espacio-palabra::after
 	{
 		width: 120px;
 		height: 25px;
@@ -223,7 +224,6 @@
 	.espacio-palabra::after{
 		position: absolute;
 		content: "";
-		width: 100%;
 		height: 100%;
 		top: 0px;
 		background: #FFFFFF;
@@ -625,9 +625,9 @@
 		-o-transform-origin: center center;
 	}
 	.palabra_selected{
-		transform: scale(1.2) rotate(0deg);
-		-webkit-transform: scale(1.2) rotate(0deg);
-		-o-transform: scale(1.2) rotate(0deg);
+		transform: scale(1.1) rotate(0deg);
+		-webkit-transform: scale(1.1) rotate(0deg);
+		-o-transform: scale(1.1) rotate(0deg);
 
 		transition: none;
 		-webkit-transition: none;
