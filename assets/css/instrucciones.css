@@ -613,7 +613,7 @@
     }
     74%{
         left: 50%;
-        top: 70%;
+        top: 78%;
         transform: translateX(-9px) translateY(-9px) scale(1);
         -webkit-transform: translateX(-9px) translateY(-9px) scale(1);
         -o-transform: translateX(-9px) translateY(-9px) scale(1);
