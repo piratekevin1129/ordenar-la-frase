@@ -68,7 +68,7 @@ function setGame(){
 		ee.setAttribute('ind',u)
 		ee.setAttribute('key','')
 		ee.setAttribute('value','')
-		var h = '<div class="espacio-palabra"></div><button class="espacio-eliminar" onclick="quitarPalabra(this)"></button>'
+		var h = '<div class="espacio-palabra"><p>...</p></div><button class="espacio-eliminar" onclick="quitarPalabra(this)"></button>'
 		ee.innerHTML = h
 		getE('espacios-wrap').appendChild(ee)
 

@@ -80,8 +80,8 @@
     position: absolute;
     width: 14px;
     height: 14px;
-    right: 15px;
-    top: 10px;
+    right: 0px;
+    top: 0px;
     cursor: pointer;
 }
 #instrucciones-close-btn:hover{

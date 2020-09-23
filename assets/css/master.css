@@ -468,7 +468,7 @@
 	background-position: center;
 	background-color: rgba(0,0,0,0);
 	background-image: url(../images/remove-icon-2.svg);
-	top: -25px;
+	
 	opacity: 0;
 	padding: 0px;
 	border: none;
@@ -502,10 +502,13 @@
 }
 
 .espacio-element-empty .espacio-eliminar{
-	right: 100%;
+	right: -25px;
+	top: 50% !important;
+	top: calc(50% - 12.5px) !important;
+	top: -moz-calc(50% - 12.5px) !important;
 	opacity: 0;
-	transition: right 0.2s, opacity 0.2s, top 0.2s;
-	-webkit-transition: right 0.2s, opacity 0.2s, top 0.2s;
+	transition: right 0.2s, opacity 0.2s;
+	-webkit-transition: right 0.2s, opacity 0.2s;
 }
 .espacio-element-empty .espacio-palabra{
 	left: -100%;
