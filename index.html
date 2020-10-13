@@ -21,6 +21,7 @@
     <!--<link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />-->
 
     <script>
+        var nombre_game = ''
         var titulo_final = ''
         var titulo_final_mal = ''
         var mensaje_final = ''
@@ -53,6 +54,18 @@
             </div>
 
             <div id="espacios-cont">
+                <!--diseños para mobil-->
+                <div class="espacios-cont-corner-1"></div>
+                <div class="espacios-cont-corner-2"></div>
+                <div class="espacios-cont-corner-3"></div>
+                <div class="espacios-cont-corner-4"></div>
+                <div class="espacios-cont-corner-top"></div>
+                <div class="espacios-cont-corner-bottom"></div>
+                <div class="espacios-cont-corner-right"></div>
+                <div class="espacios-cont-corner-left"></div>
+                <div class="espacios-cont-corner-top"></div>
+                <!--diseños para mobil-->
+                <div id="espacios-title"></div>
                 <div id="espacios-wrap">
                     
                 </div>
@@ -63,21 +76,24 @@
 
         <div id="modal" class="modal-off">
             <div id="modal-msg">
-                <div id="modal-icon-msg" class="modal-icon-msg-error"></div>
-                <div id="modal-text-msg">
-                    <p>Lorem Ipsu</p>
-                    <button class="modal-continue-btn"></button>
+                <div id="modal-title"></div>
+                <div id="modal-msg-content">
+                    <!--<div id="modal-icon-msg" class="modal-icon-msg-error"></div>-->
+                    <div id="modal-text-msg">
+                        <p>Lorem Ipsu</p>
+                    </div>
                 </div>
+                <button id="modal-continue-btn"></button>
                 <div id="modal-close-msg" onclick="unsetModal()"></div>
             </div>
         </div>
 
         <div id="instrucciones" class="instrucciones-off">
             <div id="instrucciones-box">
-                <div id="instrucciones-box-wrap">
-                    <h4 id="instrucciones_title"></h4><!--titulo-->
-                    <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
-                    
+                <h4 id="instrucciones_title"></h4><!--titulo-->
+                <div id="instrucciones-close-btn" onclick="closeInstrucciones()"></div>
+
+                <div id="instrucciones-box-wrap">    
                     <p id="instrucciones_txt"></p><!--Texto introductorio personalizado-->
                     <p id="instrucciones_inst"></p><!--Texto por defecto de las instrucciones-->
                     <div id="instrucciones-gif">
@@ -91,6 +107,8 @@
                         <div class="instrucciones-star"></div>
                     </div>
                 </div>
+
+                <button id="instrucciones-btn" onclick="closeInstrucciones()">Empezar</button>
             </div>
         </div>
 
@@ -195,6 +213,7 @@ var animacion_init = null
 function initGame(){
 
     //print all data
+    nombre_game = global_data.nombre
     titulo_final = global_data.titulo_final
     mensaje_final = global_data.mensaje_final
     titulo_final_mal = global_data.titulo_final_mal
@@ -202,6 +221,8 @@ function initGame(){
     titulo_instrucciones = global_data.titulo_instrucciones
     mensaje_instrucciones = global_data.mensaje_instrucciones
     numero_intentos = global_data.numero_intentos
+    
+    getE('espacios-title').innerHTML = nombre_game
     getE('instrucciones_title').innerHTML = titulo_instrucciones
     getE('instrucciones_txt').innerHTML = mensaje_instrucciones
     getE('intentos_txt').innerHTML = numero_intentos
