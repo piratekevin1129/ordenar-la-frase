@@ -1,3 +1,6 @@
+body,html{
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.2);
+}
 #tra_contenedor{
 	position: relative;
 	width: 845px;
@@ -30,30 +33,34 @@
 
 #comprobar-btn{
 	display: flex;
-	width: 150px;
-	height: 40px;
-	border-radius: 4px;
-	background: #feb30c;
-	background: linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -webkit-linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -o-linear-gradient(to bottom, #feb30c, #f09c00);
-	background: -moz-linear-gradient(to bottom, #feb30c, #f09c00);
+	width: 134px;
+	height: 45px;
+	
+	background-color: rgba(0,0,0,0);
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url(../images/comprobar-background.svg);
 	border: none;
 	margin: 0px auto;
 	padding: 0px;
+	margin-top: 20px;
+	padding-bottom: 10px;
 
 	font-family: 'Quicksand', sans-serif;
-	font-size: 15px;
-	color: #000000;
+	font-size: 18px;
+	color: #FFFFFF;
 	text-align: center;
 	line-height: normal;
-	font-weight: 500;
+	font-weight: 700;
 	cursor: pointer;
 	justify-content: center;
 	align-items: center;
 
-	transition: box-shadow 0.1s;
-	-webkit-transition: box-shadow 0.1s;
+	text-shadow: 0px 0px 4px #BA8102;
+
+	transition: transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
+	-webkit-transition: box-shadow 0.1s, -webkit-transform 0.1s, -o-transform 0.1s;
 }
 
 #frase-cont{
@@ -275,11 +282,8 @@
 	margin: 0px auto;
 	width: 700px;
 	height: auto;
-	background-color: #FFFFFF;
 	box-sizing: border-box;
 	border-radius: 4px;
-	/*box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);*/
-	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2) inset;
 }
 #palabras-wrap{
 	position: relative;
@@ -297,13 +301,14 @@
 }
 
 .palabra-element,#palabra-move{
-	background-color: #7cb139;
+	background-color: rgba(0,0,0,0);
 	border: rgba(0,0,0,0) solid 1px;
 	
 	box-sizing: border-box;
-	padding: 0px 15px;
+	padding: 0px 5px;
 	
-	border-radius: 4px;
+	border-radius: 0px 0px 0px 0px;
+	padding-bottom: 5px;
 
 	display: flex;
 	align-items: center;
@@ -314,14 +319,19 @@
 	position: relative;
 	margin: 0px 10px;
 	margin-bottom: 10px;
-	transform-origin: 0% center;
-	-webkit-transform-origin: 0% center;
-	-o-transform-origin: 0% center;
+	transform-origin: center center;
+	-webkit-transform-origin: center center;
+	-o-transform-origin: center center;
 }
 #palabra-move{
 	position: absolute;
 	margin: 0px;
 	cursor: grabbing;
+	z-index: 2;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(../images/palabra-background.svg);
 }
 .palabra-move-off{
 	visibility: hidden;
@@ -331,8 +341,8 @@
 	opacity: 0;
 	box-shadow: none;
 
-	transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
-	-webkit-transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	/*transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	-webkit-transition: visibility 0.1s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;*/
 }
 .palabra-move-on{
 	visibility: visible;
@@ -340,17 +350,20 @@
 	-webkit-transform: scale(1);
 	-o-transform: scale(1);
 	opacity: 1;
-	box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
+	filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	-webkit-filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	-o-filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.5));
+	/*box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);*/
 
-	transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
-	-webkit-transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	/*transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;
+	-webkit-transition: visibility 0s, opacity 0.1s, transform 0.1s, -webkit-transform 0.1s, -o-transform 0.1s, box-shadow 0.1s;*/
 }
 .palabra-element p,#palabra-move p,.espacio-palabra p{
 	display: block;
 	width: 100%;
 	font-family: 'Quicksand', sans-serif;
 	font-size: 14px;
-	color: #000000;
+	color: #FFFFFF;
 	text-align: center;
 	font-weight: normal;
 	margin: 0px;
@@ -360,14 +373,22 @@
 }
 /*estilo para el mousedown*/
 .palabra_clicked{
-	visibility: hidden;
+	/*visibility: hidden;
 	opacity: 0;
 	transform: scale(0) rotate(-45deg);
 	-webkit-transform: scale(0) rotate(-45deg);
-	-o-transform: scale(0) rotate(-45deg);
+	-o-transform: scale(0) rotate(-45deg);*/
+	cursor: default !important;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/palabra-clicked-background.svg);
 
 	transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
 	-webkit-transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
+}
+.palabra_clicked p{
+	visibility: hidden;
 }
 /*estilo para el tap o click*/
 .palabra_selected{
@@ -375,8 +396,11 @@
 	transform: scale(1.1) rotate(-1deg);
 	-webkit-transform: scale(1.1) rotate(-1deg);
 	-o-transform: scale(1.1) rotate(-1deg);
-	box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.4);
-	border: rgba(0,0,0,1) solid 1px;
+	
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(../images/palabra-background.svg);
 
 	transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
 	-webkit-transition: visibility 0.3s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
@@ -388,22 +412,68 @@
 	-webkit-transform: scale(1) rotate(0deg);
 	-o-transform: scale(1) rotate(0deg);
 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-image: url(../images/palabra-background.svg);
+
 	transition: visibility 0s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
 	-webkit-transition: visibility 0s, opacity 0.3s, transform 0.3s, -webkit-transform 0.3s, -o-transform 0.3s, box-shadow 0.3s, border 0.3s;
 }
 .palabra_sola:hover{
-	box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.4);
-	border: rgba(0,0,0,1) solid 1px;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-o-transform: scale(1.1);
 }
-
 
 #espacios-cont{
 	position: relative;
 	margin: 0px auto;
-	width: 700px;
-	height: auto;
+	margin-top: 20px;
+	width: 530px;
+	height: 155px;
 	box-sizing: border-box;
+	border-radius: 4px;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/frase-background.svg);
+
+	transition: background-color 0.5s;
+	-webkit-transition: background-color 0.5s;
 }
+#espacios-title{
+	position: absolute;
+	box-sizing: border-box;
+	width: 407px;
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+	padding-bottom: 13px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: 700;
+	line-height: normal;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/nombre-background.svg);
+	left: 50%;
+	left: calc(50% - 203.5px);
+	left: -moz-calc(50% - 203.5px);
+	top: -22px;
+
+	text-shadow: 0px 0px 3px #7FAA41;
+}
+
 #espacios-wrap{
 	position: relative;
 	width: 100%;
@@ -415,12 +485,10 @@
 	flex-wrap: wrap;
 	flex-direction: row;
 	align-content: center;
-	justify-content: flex-start;
-	padding-top: 10px;
-
-	background-color: #464646;
-	border-radius: 4px;
-	box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.5) inset;
+	justify-content: center;
+	padding-top: 25px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .espacio-element{
@@ -428,26 +496,33 @@
 	
 	box-sizing: border-box;
 	padding: 0px;
-	margin: 0px 10px;
+	margin: 0px 5px;
 	margin-bottom: 10px;
-	border-radius: 4px;
+	
 	border: none;
 	overflow: hidden;
 
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-image: url(../images/espacio-background.svg);
+
+	transition: background-color 0.2s, width 0.2s;
+	-webkit-transition: background-color 0.2s, width 0.2s;
 }
 
 .espacio-palabra{
-	position: absolute;
+	position: relative;
 	width: 100%;
 	height: 100%;
-	background-color: #F1F1F1;
-	padding: 0px 15px;
+	
+	padding: 0px 5px;
 	box-sizing: border-box;
 	
-	border-radius: 4px;
 	overflow: hidden;
 
 	display: flex;
@@ -457,14 +532,13 @@
 .espacio-eliminar{
 	display: block;
 	position: absolute;
-	width: 25px;
-	height: 25px;
+	width: 20px;
+	height: 20px;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 	background-color: rgba(0,0,0,0);
-	background-image: url(../images/remove-icon-2.svg);
-	
+	background-image: url(../images/remove-icon-3.svg);
 	opacity: 0;
 	padding: 0px;
 	border: none;
@@ -473,42 +547,69 @@
 
 @keyframes animacion-espacio-active{
 	0% {
-		box-shadow: 0px 0px 1px 1px #7cb139;
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 	50% {
-		box-shadow: 0px 0px 1px 1px rgba(0,0,0,0);
+		filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-webkit-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-o-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
 	}
 	100% {
-		box-shadow: 0px 0px 1px 1px #7cb139;
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 }
 @keyframes animacion-espacio-active-responsive{
 	0% {
-		background-color: rgba(255,255,255,0.5);
-		box-shadow: 0px 0px 1px 1px #7cb139;
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 	50% {
-		background-color: rgba(255,255,255,0);
-		box-shadow: 0px 0px 1px 1px rgba(0,0,0,0);
+		filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-webkit-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
+		-o-filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
 	}
 	100% {
-		background-color: rgba(255,255,255,0.5);
-		box-shadow: 0px 0px 1px 1px #7cb139;
+		filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-webkit-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+		-o-filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
 	}
 }
 
 .espacio-element-empty .espacio-eliminar{
-	right: -25px;
-	top: 50% !important;
-	top: calc(50% - 12.5px) !important;
-	top: -moz-calc(50% - 12.5px) !important;
+	right: 5px;
+	top: -25px;
 	opacity: 0;
-	transition: right 0.2s, opacity 0.2s;
-	-webkit-transition: right 0.2s, opacity 0.2s;
+	transition: opacity 0.2s, top 0.2s;
+	-webkit-transition: opacity 0.2s, top 0.2s;
 }
 .espacio-element-empty .espacio-palabra{
-	left: -100%;
+	bottom: -100%;
+	left: 0px;
 	opacity: 0;
-	transition: left 0.2s, opacity 0.2s;
-	-webkit-transition: left 0.2s, opacity 0.2s;
+	transition: bottom 0.2s, opacity 0.2s;
+	-webkit-transition: bottom 0.2s, opacity 0.2s;
+}
+
+#pista-cont{
+	position: relative;
+	width: 700px;
+	margin: 0px auto;
+	padding: 0px;
+	box-sizing: border-box;
+	display: block;
+}
+#pista-txt{
+	position: relative;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	font-family: ;
+	font-size: 14px;
+	color: #404E67;
 }

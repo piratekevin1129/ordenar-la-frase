@@ -10,17 +10,21 @@
 
     /**********CONTENIDO AQUI************/
     #comprobar-btn:hover{
-		box-shadow:0px 4px 5px -1px rgba(0,0,0,0.5);
-		background: #f19e01;
+		transform: scale(1.1);
+		-webkit-transform: scale(1.1);
+		-o-transform: scale(1.1);
 	}
 
     #palabra-move,
-	.palabra-element,
+	.palabra-element{
+		width: 100px;
+		height: 30px;
+	}
 	.espacio-element,
 	.espacio-palabra,
 	.espacio-palabra::after
 	{
-		width: 120px;
+		width: 90px;
 		height: 30px;
 	}
 	.espacio-element-active{
@@ -32,6 +36,8 @@
 		-webkit-animation-duration: 1s;
 		-webkit-animation-iteration-count: infinite;
 		-webkit-animation-timing-function: linear;
+		z-index: 1;
+		border-radius: 0px 0px 0px 0px;
 	}
 
 	.espacio-palabra::after{
@@ -48,12 +54,14 @@
 
 		transition: opacity 0.2s;
 		-webkit-transition: opacity 0.2s;
+		display: none;
 	}
 	.espacio-element-occuped .espacio-eliminar{
-		right: -25px;
+		top: -20px;
+		right: 5px;
 		opacity: 1;
-		transition: right 0.2s, opacity 0.2s;
-		-webkit-transition: right 0.2s, opacity 0.2s;
+		transition: top 0.2s, opacity 0.2s;
+		-webkit-transition: top 0.2s, opacity 0.2s;
 	}
 	.espacio-element-occuped:hover .espacio-palabra::after{
 		opacity: 1 !important;
@@ -61,15 +69,6 @@
 	.espacio-element-occuped:hover .espacio-eliminar{
 		right: 5px;
 		opacity: 1 !important;
-	}
-	.espacio-element-occuped .espacio-palabra{
-		left: 0%;
-		opacity: 1;
-		transition: left 0.2s, opacity 0.2s, padding 0.2s;
-		-webkit-transition: left 0.2s, opacity 0.2s, padding 0.2s;
-	}
-	.espacio-element-occuped:hover .espacio-palabra{
-		padding-right: 30px;
 	}
 
 	.frase-element-on{
@@ -86,20 +85,10 @@
 	}
 	/************END CONTENT*************/
 
-	.modal-continue-btn:hover{
-	    filter: brightness(105%);
-	    -webkit-filter: brightness(105%);
-	    -o-filter: brightness(105%);
-	}
-	.modal-continue-btn:hover::after{
-	    animation-name: animacion-continue-btn;
-	    animation-duration: 0.5s;
-	    animation-timing-function: linear;
-	    animation-iteration-count: infinite;
-	    -webkit-animation-name: animacion-continue-btn;
-	    -webkit-animation-duration: 0.5s;
-	    -webkit-animation-timing-function: linear;
-	    -webkit-animation-iteration-count: infinite;
+	#modal-continue-btn:hover{
+	    transform: scale(1.05);
+	    -webkit-transform: scale(1.05);
+	    -o-transform: scale(1.05);
 	}
 }
 
