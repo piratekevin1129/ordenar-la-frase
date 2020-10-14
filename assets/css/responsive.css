@@ -260,26 +260,15 @@
 		animation-name: animacion-win-color;
 		-webkit-animation-name: animacion-win-color;
 	}
-	/************END CONTENT*************/
-
+	/************************************/
 	#modal{
 	    height: 396px;
 	    top: 30px;
 	}
-	.modal-continue-btn:hover{
-	    filter: brightness(105%);
-	    -webkit-filter: brightness(105%);
-	    -o-filter: brightness(105%);
-	}
-	.modal-continue-btn:hover::after{
-	    animation-name: animacion-continue-btn;
-	    animation-duration: 0.5s;
-	    animation-timing-function: linear;
-	    animation-iteration-count: infinite;
-	    -webkit-animation-name: animacion-continue-btn;
-	    -webkit-animation-duration: 0.5s;
-	    -webkit-animation-timing-function: linear;
-	    -webkit-animation-iteration-count: infinite;
+	#modal-continue-btn:hover{
+	    transform: scale(1.05);
+	    -webkit-transform: scale(1.05);
+	    -o-transform: scale(1.05);
 	}
 	
 	/************INSTRUCCIONES***********/
@@ -462,23 +451,6 @@
 	    height: 560px;
 	    top: 40px;
 	    z-index: 2;
-	}
-	.modal-continue-btn{
-	    width: 150px;
-	    height: 35px;
-	    
-	    font-size: 14px;
-	    padding-right: 25px;
-	}
-	.modal-continue-btn::after{
-	    width: 25px;
-	    height: 25px;
-	    top: 50%;
-	    top: calc(50% - 12.5px);
-	    top: -moz-calc(50% - 12.5px);
-	    right: 5px;
-	    
-	    background-size: 18px 18px;
 	}
 
 	/************************************/
@@ -698,30 +670,15 @@
 	    top: 45px;
 	    z-index: 200;
 	}
-	.modal-continue-btn{
+	#modal-continue-btn{
 	    width: 150px;
 	    height: 35px;
 	    
 	    font-size: 14px;
-	    padding-right: 25px;
-	}
-	.modal-continue-btn::after{
-	    width: 25px;
-	    height: 25px;
-	    top: 50%;
-	    top: calc(50% - 12.5px);
-	    top: -moz-calc(50% - 12.5px);
-	    right: 5px;
-	    
-	    background-size: 18px 18px;
 	}
 
 	#modal-msg{
 	    width: 300px;
-	    height: 165px;
-	}
-	.modal-off #modal-msg{
-	    left: -300px;
 	}
 
 	#instrucciones{

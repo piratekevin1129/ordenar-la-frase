@@ -238,47 +238,51 @@ function upPalabra(e){
 
 var animacion_quitar_palabra = null //funcion para switchear attribute onclick en responsive
 function quitarPalabra(btn,s){
-	if(s==null||s==undefined){
-		remove_mp3.play()
-	}
-	
-	var padre = btn.parentNode
-	var ind = padre.getAttribute('ind')
-	var key = padre.getAttribute('key')
-
-	getE('palabra'+key).classList.remove('palabra_clicked')
-	getE('palabra'+key).classList.add('palabra_sola')
-
-	padre.classList.remove('espacio-element-occuped')
-	padre.classList.add('espacio-element-empty')
-	padre.setAttribute('key','')
-	padre.setAttribute('value','')
-	var texto = padre.getElementsByClassName('espacio-palabra')[0]
-	texto.innerHTML = ''
-
-	if(ismobile){
+	if(!animando_final){
 		if(s==null||s==undefined){
-			//quitando manualmente
-			animacion_quitar_palabra = setTimeout(function(){
-				clearTimeout(animacion_quitar_palabra)
-				animacion_quitar_palabra = null
+			remove_mp3.play()
+		}
+		
+		var padre = btn.parentNode
+		var ind = padre.getAttribute('ind')
+		var key = padre.getAttribute('key')
 
+		getE('palabra'+key).classList.remove('palabra_clicked')
+		getE('palabra'+key).classList.add('palabra_sola')
+
+		padre.classList.remove('espacio-element-occuped')
+		padre.classList.add('espacio-element-empty')
+		padre.setAttribute('key','')
+		padre.setAttribute('value','')
+		var texto = padre.getElementsByClassName('espacio-palabra')[0]
+		texto.innerHTML = ''
+
+		if(ismobile){
+			if(s==null||s==undefined){
+				//quitando manualmente
+				animacion_quitar_palabra = setTimeout(function(){
+					clearTimeout(animacion_quitar_palabra)
+					animacion_quitar_palabra = null
+
+					//poner de nuevo el onclick
+					padre.setAttribute('onclick','clickEspacio('+ind+')')
+				},50)
+			}else{
+				//quitando directamete
 				//poner de nuevo el onclick
 				padre.setAttribute('onclick','clickEspacio('+ind+')')
-			},50)
-		}else{
-			//quitando directamete
-			//poner de nuevo el onclick
-			padre.setAttribute('onclick','clickEspacio('+ind+')')
-		}
-	}		
+			}
+		}		
 
-	getE('frase'+ind).innerHTML = '<p>...</p>'
-	getE('frase'+ind).setAttribute('key','')
+		getE('frase'+ind).innerHTML = '<p>...</p>'
+		getE('frase'+ind).setAttribute('key','')
+	}
+		
 }
 
 var intentos = 0
 var animacion_palabra_correcta = null
+var animando_final = false
 
 function comprobarJuego(){
 	var frase = ""
@@ -300,7 +304,8 @@ function comprobarJuego(){
 		pararReloj()
 		getE('frase-wrap').classList.add('frase-wrap-win')
 		setModal({
-			msg:'<span>'+titulo_final+',</span> '+mensaje_final+'.<br />',
+			title:titulo_final,
+			msg:mensaje_final,
 			icon:'success',
 			close:false,
 			continue:true,
@@ -326,20 +331,46 @@ function comprobarJuego(){
 			getE('comprobar-btn').disabled = true
 			getE('frase-correcta-txt').className = 'frase-correcta-txt-show'
 			j = 0
+
+			animando_final = true
 			animacion_palabra_correcta = setInterval(function(){
 				if(j==frases_coll.length){
 					clearInterval(animacion_palabra_correcta)
 					animacion_palabra_correcta = null
 
-					setModal({msg:'<span>'+titulo_final_mal+'</span> '+mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',close:false})
+					setModal({
+						title:titulo_final_mal,
+						msg:mensaje_final_mal+'<br />Haz clic en el botón <span>Reiniciar</span> para jugar de nuevo',
+						close:false,
+						continue:true,
+						action:'reloadGame',
+						label:'Aceptar'
+					})
 				}else{
+
+					var p_c = null//palabra clicked
+					for(k = 0;k<palabras_coll.length;k++){
+						if(palabras_coll[k].getAttribute('key')==respuesta_cortada[j]){
+							p_c = palabras_coll[k]
+						}
+					}
+					if(p_c!=null){
+						espacios_coll[j].className = 'espacio-element espacio-element-occuped'
+						espacios_coll[j].setAttribute('key',p_c.getAttribute('ind'))
+						espacios_coll[j].setAttribute('value',p_c.getAttribute('key'))
+						var texto = espacios_coll[j].getElementsByClassName('espacio-palabra')[0]
+						texto.innerHTML = '<p>'+respuesta_cortada[j]+'</p>'
+					}else{
+						console.log("null")
+					}
+
 					frases_coll[j].innerHTML = '<p>'+respuesta_cortada[j]+'</p>'
 					frases_coll[j].classList.add('frase-element-on')
 					j++
 					over_mp3.currentTime = 0
 					over_mp3.play()
 				}
-			},200)
+			},100)
 		}else{
 			//dejar las buenas y quitar las malas
 			for(i = 0;i<espacios_coll.length;i++){
@@ -372,27 +403,48 @@ function setModal(params){
 		close = params.close
 	}
 
-	if(icon=='success'){
+	if(params.title!=null&&params.title!=undefined){
+		document.getElementById('modal-title').innerHTML = params.title
+	}else{
+		document.getElementById('modal-title').innerHTML = 'Alerta'
+	}
+
+	/*if(icon=='success'){
 		document.getElementById('modal-icon-msg').className = 'modal-icon-msg-success'
 	}else{
 		document.getElementById('modal-icon-msg').className = 'modal-icon-msg-error'
-	}
+	}*/
+
 	if(close){
 		document.getElementById('modal-close-msg').style.visibility = 'visible'
 	}else{
 		document.getElementById('modal-close-msg').style.visibility = 'hidden'
 	}
 
-	var continue_btn = ''
+	
 	var msg_full = '<p>'+msg+'</p>'
 	if(params.continue!=null&&params.continue!=undefined){
-		continue_btn+='<button class="modal-continue-btn" onmouseover="overContinue()" onclick="'+params.action+'()">'+params.label+'</button>'
-		msg_full+=continue_btn
+		document.getElementById('modal-continue-btn').style.display = 'block'
+		
+	}else{
+		document.getElementById('modal-continue-btn').style.display = 'none'
 	}
+
+	if(params.action!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').setAttribute('onclick',params.action+'()')
+	}else{
+		document.getElementById('modal-continue-btn').setAttribute('onclick','unsetModal()')
+	}
+
+	if(params.label!=null&&params.action!=undefined){
+		document.getElementById('modal-continue-btn').innerHTML = params.label
+	}else{
+		document.getElementById('modal-continue-btn').innerHTML = 'Continuar'
+	}
+
 
 	document.getElementById('modal-text-msg').innerHTML = msg_full
 
-	
 	victoria_mp3.play()
 
 	if(params.delay!=null&&params.delay!=undefined){
