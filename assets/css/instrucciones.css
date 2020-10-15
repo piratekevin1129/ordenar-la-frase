@@ -306,7 +306,6 @@
     
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-    
 }
 .demo-col-4,.demo-col-5,.demo-col-6{
     animation-duration: 5s;
